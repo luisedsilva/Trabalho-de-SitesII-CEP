@@ -87,6 +87,7 @@ let map;
 
 // Api de Notias
 const buscaNoticia = (localidade) => {
+    
     const apiKeyNoticia = '064fffa3bc244b66924349ad505fb65a';
     const apiNoticiasUrl = `https://newsapi.org/v2/top-headlines?q=${localidade}&apiKey=${apiKeyNoticia}`;
 
@@ -96,9 +97,31 @@ const buscaNoticia = (localidade) => {
             exibeNoticias(data.articles);
         })
         .catch((error) => {
-            console.error('Erro na busca de notícias:', error);
+            console.error('Erro na busca de notícias:', erro);
         });
+        
 };
+
+const exibeNoticias = (noticias) => {
+    const divNoticias = document.querySelector('#noticia');
+    divNoticias.innerHTML = '';
+
+    if (noticias.length > 0) {
+        const ul = document.createElement('ul');
+
+        noticias.forEach((noticia) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${noticia.title}</strong>: ${noticia.description}`;
+            ul.appendChild(li);
+        });
+
+        divNoticias.appendChild(ul);
+    } else {
+        divNoticias.textContent = 'Nenhuma notícia encontrada para esta região.';
+    }
+};
+
+
 
 
 
