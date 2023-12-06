@@ -1,0 +1,63 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  background: url('./img/img\ de\ fundo.jpeg') center center fixed;
+  background-size: cover;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(36, 35, 35);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#cep, #endereco, #prev-temp, #map, #noticia {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#input-cep {
+  padding: 10px;
+  width: 60%;
+  margin-right: 10px;
+}
+
+#button-cep {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#button-cep:hover {
+  background-color: #45a049;
+}
+
+#map {
+  height: 300px;
+}
+
+#noticia {
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+#input-cep {
+  width: 100%;
+  margin-right: 0;
+  margin-bottom: 10px;
+  }
+  
+#button-cep {
+  width: 100%;
+  }
+}
