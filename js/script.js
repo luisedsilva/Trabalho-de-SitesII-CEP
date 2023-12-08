@@ -107,7 +107,7 @@ const buscaNoticia = (localidade) => {
     if (noticias.length > 0) {
       const ul = document.createElement('ul');
       ul.classList.add('noticia-list');
-      ul.innerHTML = '<h2>Notícias</h2><br>';
+      ul.innerHTML = '<h2></h2><br>';
   
       noticias.slice(0, numeroDeNoticiasAMostrar).forEach((noticia) => {
         const li = document.createElement('li');
