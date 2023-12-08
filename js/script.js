@@ -85,45 +85,41 @@ const exibePrevisaoTempo = (dados) => {
 
 let map;
 
-// Api de Notias
 const buscaNoticia = (localidade) => {
-    
-    const apiKeyNoticia = '064fffa3bc244b66924349ad505fb65a';
-    const apiNoticiasUrl = `https://newsapi.org/v2/top-headlines?q=${localidade}&apiKey=${apiKeyNoticia}`;
-
+    const apiNoticiasUrl = 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&gtd=4&de=05-12-2023';
     fetch(apiNoticiasUrl)
-        .then((res) => res.json())
-        .then((data) => {
-            exibeNoticias(data.articles);
-        })
-        .catch((error) => {
-            console.error('Erro na busca de notícias:', erro);
-        });
-        
-};
-
-const exibeNoticias = (noticias) => {
-    const divNoticias = document.querySelector('#noticia');
+      .then((res) => res.json())
+      .then((data) => {
+        exibeNoticias(data.items);
+      })
+      .catch((error) => {
+        console.error('Erro na busca de notícias:', error);
+      });
+  }
+  
+  const exibeNoticias = (noticias) => {
+    const divNoticias = document.querySelector('.noticia');
     divNoticias.innerHTML = '';
-
+  
+    const numeroDeNoticiasAMostrar = 4; 
+  
     if (noticias.length > 0) {
-        const ul = document.createElement('ul');
-
-        noticias.forEach((noticia) => {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${noticia.title}</strong>: ${noticia.description}`;
-            ul.appendChild(li);
-        });
-
-        divNoticias.appendChild(ul);
+      const ul = document.createElement('ul');
+      ul.classList.add('noticia-list');
+      ul.innerHTML = '<h2>Notícias</h2><br>';
+  
+      noticias.slice(0, numeroDeNoticiasAMostrar).forEach((noticia) => {
+        const li = document.createElement('li');
+        li.classList.add('noticia-item');
+        li.innerHTML = `<strong>${noticia.titulo}</strong>: ${noticia.introducao}<h6><br>${noticia.link}<br>${noticia.data_publicacao}</h6>`;
+        ul.appendChild(li);
+      });
+  
+      divNoticias.appendChild(ul);
     } else {
-        divNoticias.textContent = 'Nenhuma notícia encontrada para esta região.';
+      divNoticias.textContent = 'Nenhuma notícia encontrada para esta região.';
     }
-};
-
-
-
-
-
-
-
+  
+    let x = document.getElementById('noticia');
+    x.style.display = "flex";
+  }
