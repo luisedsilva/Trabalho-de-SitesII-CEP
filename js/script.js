@@ -85,8 +85,9 @@ const exibePrevisaoTempo = (dados) => {
 
 let map;
 
+// Api de Notias
 const buscaNoticia = (localidade) => {
-    const apiNoticiasUrl = 'https://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&gtd=4&de=05-12-2023';
+    const apiNoticiasUrl = 'http://servicodados.ibge.gov.br/api/v3/noticias/?tipo=noticia&gtd=4&de=05-12-2023';
     fetch(apiNoticiasUrl)
       .then((res) => res.json())
       .then((data) => {
