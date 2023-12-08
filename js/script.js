@@ -122,4 +122,4 @@ const buscaNoticia = (localidade) => {
   
     let x = document.getElementById('noticia');
     x.style.display = "flex";
-  }
+  };
